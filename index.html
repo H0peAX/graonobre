@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Grão Nobre — Cafés Especiais</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Topo -->
+  <header class="topbar">
+    <div class="logo">GRÃO <span>NOBRE</span> ☕</div>
+    <button class="cart-btn" id="openCart">🛒 Carrinho (<span id="cartCount">0</span>)</button>
+  </header>
+
+  <!-- Destaque -->
+  <section class="hero">
+    <h2>Cafés especiais, torrados na semana</h2>
+    <p>Direto de fazendas de Minas Gerais para a sua xícara. Frete calculado pela rota real.</p>
+  </section>
+
+  <!-- Catálogo -->
+  <main class="container">
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </main>
+
+  <footer class="footer">© Grão Nobre — loja de demonstração. Pagamentos são apenas simulados.</footer>
+
+  <!-- Carrinho -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="drawer" id="drawer">
+    <div class="drawer__head">
+      <h2>Seu carrinho</h2>
+      <button class="close" id="closeCart" aria-label="Fechar">×</button>
+    </div>
+    <div id="cartItems"></div>
+
+    <div class="section">
+      <h3>📍 Entrega e cálculo de rota</h3>
+      <div class="row">
+        <input id="cep" placeholder="CEP (00000-000)" inputmode="numeric" maxlength="9">
+        <button class="btn btn--ghost" id="calcBtn" style="flex:0 0 auto;margin-bottom:10px">Calcular</button>
+      </div>
+      <div id="addrBox"></div>
+      <div class="row">
+        <input id="num" placeholder="Número">
+        <input id="comp" placeholder="Complemento">
+      </div>
+      <div id="shipMsg" class="note"></div>
+      <div id="map"></div>
+    </div>
+
+    <div class="section">
+      <h3>👤 Seus dados</h3>
+      <input id="cname" placeholder="Nome completo">
+      <input id="cemail" type="email" placeholder="E-mail">
+    </div>
+
+    <div class="section">
+      <h3>💳 Pagamento (simulado)</h3>
+      <div class="pay-options">
+        <label><input type="radio" name="pm" value="pix" checked>Pix</label>
+        <label><input type="radio" name="pm" value="boleto">Boleto</label>
+        <label><input type="radio" name="pm" value="cartao">Cartão</label>
+      </div>
+      <div id="cardFields" class="hidden">
+        <input id="cardNum" placeholder="Número do cartão (qualquer valor)" maxlength="19">
+        <div class="row"><input placeholder="MM/AA" maxlength="5"><input placeholder="CVV" maxlength="4"></div>
+      </div>
+    </div>
+
+    <div class="section totals">
+      <div><span>Subtotal</span><span id="tSub">R$ 0,00</span></div>
+      <div><span>Frete</span><span id="tShip">—</span></div>
+      <div class="total"><span>Total</span><span id="tTotal">R$ 0,00</span></div>
+      <div id="checkErr" class="err"></div>
+      <button class="btn btn--block" id="payBtn" style="margin-top:10px">Gerar pagamento</button>
+    </div>
+  </aside>
+
+  <!-- Modal de pagamento -->
+  <div class="modal" id="modal"><div class="modal__box" id="mbox"></div></div>
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/store.js"></script>
+</body>
+</html>
